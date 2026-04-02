@@ -3,219 +3,394 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EK NEWS</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: white;
-    }
+  <title>RTR</title>
+  <style>body {
+  font-family: 'Poppins', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #0d0d0d;
+  color: #f5f5f5;
+}
 
-    header {
-      background: #2e7d32;
-      color: white;
-      padding: 10px 20px;
-      text-align: center;
-    }
+/* Header */
+header {
+  background: linear-gradient(90deg, #000000, #1a1a1a);
+  color: gold;
+  padding: 15px 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border-bottom: 2px solid gold;
+}
 
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      background: #388e3c;
-      padding: 10px;
-    }
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  background: #111;
+  padding: 12px;
+  border-bottom: 1px solid gold;
+}
 
-    nav button {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-    }
+nav button {
+  background: none;
+  border: 1px solid gold;
+  color: gold;
+  font-size: 15px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
-    nav button:hover {
-      text-decoration: underline;
-    }
+nav button:hover {
+  background: gold;
+  color: black;
+}
 
-    .section {
-      padding: 20px;
-      display: none;
-    }
+/* Sections */
+.section {
+  padding: 20px;
+  display: none;
+}
 
-    .active {
-      display: block;
-    }
+.active {
+  display: block;
+}
 
-    .articles {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+/* Articles Layout */
+.articles {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
 
-    .article {
-      position: relative;
-      width: 220px;
-      height: 180px;
-      overflow: hidden;
-      border-radius: 8px;
-      box-shadow: o o 4px #17c01d;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
+.article {
+  position: relative;
+  width: 230px;
+  height: 190px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .article:hover {
-      transform: scale(1.02);
-      box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
-    }
+.article:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px gold;
+}
 
-    .article img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .article-info {
-      position: absolute;
-      bottom: 0;
-      background: rgba(225, 225, 225, 0.9);
-      width: 100%;
-      padding: 4px 6px;
-      box-sizing: border-box;
+.article img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
+/* Article Info Overlay */
+.article-info {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  padding: 6px;
+}
 
-    }
-    .article-info h3 {
-      margin: 2px 0;
-      font-size: 14px;
-      color: #2e7d32;
-    }
-    .article-info p {
-      font-size: 12px;
-      color: #444;
-      margin: 0;
-    }
+.article-info h3 {
+  margin: 2px 0;
+  font-size: 14px;
+  color: gold;
+}
 
-    .article h3 {
-      margin: 4px 0;
-      font-size: 14px;
-      color: #2e7d32;
-    }
+.article-info p {
+  font-size: 12px;
+  color: #ddd;
+  margin: 0;
+}
 
-    .article p {
-      font-size: 12px;
-      color: #444;
-      margin: 4px 0;
-    }
+/* Search */
+.search-bar {
+  text-align: center;
+  padding: 15px;
+  background: #111;
+}
 
-    .search-bar {
-      text-align: center;
-      padding: 10px;
-      background: #e8f5e9;
-      position: relative;
-    }
+#searchInput {
+  width: 80%;
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid gold;
+  border-radius: 20px;
+  background: #000;
+  color: gold;
+}
 
-    #searchInput {
-      width: 80%;
-      padding: 8px;
-      font-size: 16px;
-      border: 1px solid #81c784;
-      border-radius: 4px;
-    }
+/* SEARCH CONTAINER FIX */
+.search-bar {
+  position: relative;   /* IMPORTANT */
+  text-align: center;
+  padding: 15px;
+  background: #111;
+}
 
-    #searchResults {
-      max-height: 200px;
-      overflow-y: auto;
-      background: white;
-      border: 1px solid #ccc;
-      width: 80%;
-      margin: auto;
-      display: none;
-      position: absolute;
-      left: 10%;
-      z-index: 999;
-    }
+/* Search input */
+#searchInput {
+  width: 400px;
+  max-width: 90%;
+  padding: 10px 15px;
+  font-size: 15px;
+  border: 1px solid gold;
+  border-radius: 25px;
+  background: #000;
+  color: gold;
+  outline: none;
+}
 
-    #searchResults div {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px;
-      cursor: pointer;
-    }
+/* SEARCH DROPDOWN (PERFECT STYLE) */
+#searchResults {
+  position: absolute;
+  top: 60px; /* directly under input */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  max-width: 90%;
+  background: #111;
+  border: 1px solid gold;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255,215,0,0.4);
+  max-height: 250px;
+  overflow-y: auto;
+  display: none;
+  z-index: 999;
+}
 
-    #searchResults div img {
-      width: 50px;
-      height: 40px;
-      object-fit: cover;
-      border-radius: 4px;
-    }
+/* Each result */
+#searchResults div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  cursor: pointer;
+  color: gold;
+  transition: background 0.2s ease;
+}
 
-    #searchResults div:hover {
-      background: #f1f8e9;
-    }
+#searchResults div:hover {
+  background: rgba(255,215,0,0.1);
+}
 
-    /* Fullscreen popup overlay */
-    #popupOverlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: white;
-      color: #2e7d32;
-      z-index: 1000;
-      overflow-y: auto;
-      padding: 40px 20px 20px 20px;
-    }
+/* Small thumbnail */
+#searchResults img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 6px;
+}
 
-    #popupContent {
-      max-width: 450px;
-      margin: auto;
-      position: relative;
-      text-align: left;
-    }
+#searchResults div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  cursor: pointer;
+  color: gold;
+}
 
-    #popupContent img {
-      max-width: 100%;
-      border-radius: 4px;
-      margin-bottom: 20px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
+#searchResults div:hover {
+  background: #222;
+}
 
-    #closePopup {
-      position: fixed;
-      top: 15px;
-      right: 20px;
-      font-size: 32px;
-      font-weight: bold;
-      color: #2e7d32;
-      cursor: pointer;
-      z-index: 1100;
-    }
+/* Popup */
+#popupOverlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #000;
+  color: gold;
+  z-index: 1000;
+  overflow-y: auto;
+  padding: 50px 20px 20px 20px;
+}
 
-    #backButton {
-      position: fixed;
-      top: 15px;
-      left: 20px;
-      font-size: 14px;
-      font-weight: bold;
-      background-color: #2e7d32;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      padding: 8px 14px;
-      cursor: pointer;
-    }
+#popupContent {
+  max-width: 500px;
+  margin: auto;
+  text-align: left;
+}
+
+#popupContent img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+#closePopup {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  font-size: 32px;
+  font-weight: bold;
+  color: gold;
+  cursor: pointer;
+}
+
+#backButton {
+  position: fixed;
+  top: 15px;
+  left: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: gold;
+  color: black;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  cursor: pointer;
+}#loader {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: gold;
+  letter-spacing: 3px;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px gold;
+  }
+  to {
+    text-shadow: 0 0 20px gold, 0 0 30px orange;
+  }
+}.luxury-hero {
+  position: relative;
+  height: 450px;
+  width: 100%;
+  background: linear-gradient(180deg, #000 0%, #0d0d0d 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* ================= FULL GOLD BACKGROUND GLOW ================= */
+
+.luxury-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,215,0,0.2), transparent 60%);
+}
+
+/* ================= MOVING GOLD WAVE ================= */
+
+.gold-wave {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255,215,0,0.15) 50%,
+    transparent 70%
+  );
+  animation: waveMove 8s linear infinite;
+}
+
+@keyframes waveMove {
+  from { transform: translateX(-50%) rotate(10deg); }
+  to { transform: translateX(50%) rotate(10deg); }
+}
+
+/* ================= SHIMMER LAYER ================= */
+
+.gold-shimmer {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255,215,0,0.05),
+    rgba(255,215,0,0.05) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+  opacity: 0.3;
+  animation: shimmerMove 20s linear infinite;
+}
+
+@keyframes shimmerMove {
+  from { background-position: 0 0; }
+  to { background-position: 300px 300px; }
+}
+
+/* ================= FLOATING PARTICLES ================= */
+
+.gold-particles {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,215,0,0.4) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: particlesMove 15s linear infinite;
+}
+
+@keyframes particlesMove {
+  from { background-position: 0 0; }
+  to { background-position: 0 200px; }
+}
+
+/* ================= LOGO ================= */
+
+.center-logo {
+  position: relative;
+  z-index: 5;
+}
+
+.center-logo img {
+  width: 170px;
+  filter: drop-shadow(0 0 50px gold);
+  animation: logoFloat 4s ease-in-out infinite alternate;
+}
+
+@keyframes logoFloat {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-12px); }
+}
   </style>
 </head>
+<script>
+window.addEventListener("load", function () {
+  setTimeout(function () {
+    document.getElementById("loader").style.display = "none";
+  }, 2000); // loader shows for 2 seconds
+});
+</script>
 <body>
-  <header>
-    <h1><img src="2 logo (6).png" width="100" height="100"> </h1>
-    
-    
-  </header>
+  <div id="loader">
+  <div class="logo"> WELCOME TO ROAD TO RICHES</div>
+</div>
+<div class="luxury-hero">
+
+    <div class="gold-wave"></div>
+    <div class="gold-shimmer"></div>
+    <div class="gold-particles"></div>
+
+    <div class="center-logo">
+        <img src="c:\Users\ok\Pictures\Picture1.png" alt="RTR Logo">
+    </div>
+</div>
+  
 
   <div class="search-bar">
     <input type="text" id="searchInput" placeholder="Search articles..." oninput="searchArticles()">
@@ -255,7 +430,7 @@
     }
 
     function loadArticles() {
-      fetch('https://eric-kropa-github-io.onrender.com/articles')
+      fetch('http://localhost:3000/articles')
         .then(res => res.json())
         .then(articles => {
           articleElements = [];
@@ -276,6 +451,7 @@
                   <div class="article-info">
                   <h3>${article.title}</h3>
                   <p>${article.body.slice(0, 30)}...</p>
+                  </div>
                 `;
                 div.onclick = () => showPopup(article);
                 list.appendChild(div);
