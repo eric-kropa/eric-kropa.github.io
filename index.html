@@ -262,6 +262,39 @@ nav button:hover {
   #searchInput { width: 95%; }
   .article { height: 160px; }
 }
+/* ================= FLOATING PARTICLES ================= */
+
+.gold-particles {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,215,0,0.4) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: particlesMove 15s linear infinite;
+}
+
+@keyframes particlesMove {
+  from { background-position: 0 0; }
+  to { background-position: 0 200px; }
+}
+
+/* ================= LOGO ================= */
+
+.center-logo {
+  position: relative;
+  z-index: 5;
+}
+
+.center-logo img {
+  width: 170px;
+  filter: drop-shadow(0 0 50px gold);
+  animation: logoFloat 4s ease-in-out infinite alternate;
+}
+
+@keyframes logoFloat {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-12px); }
+}
+
   </style>
 </head>
 <script>
