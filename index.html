@@ -16,21 +16,22 @@
 header {
   background: linear-gradient(90deg, #000000, #1a1a1a);
   color: gold;
-  padding: 15px 20px;
+  padding: 15px 10px;
   text-align: center;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   border-bottom: 2px solid gold;
 }
 
 /* Navigation */
 nav {
   display: flex;
+  flex-wrap: wrap; /* allow wrapping on small screens */
   justify-content: center;
-  gap: 25px;
+  gap: 12px;
   background: #111;
-  padding: 12px;
+  padding: 10px;
   border-bottom: 1px solid gold;
 }
 
@@ -38,8 +39,8 @@ nav button {
   background: none;
   border: 1px solid gold;
   color: gold;
-  font-size: 15px;
-  padding: 6px 14px;
+  font-size: 14px;
+  padding: 6px 12px;
   border-radius: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -52,7 +53,7 @@ nav button:hover {
 
 /* Sections */
 .section {
-  padding: 20px;
+  padding: 15px 10px;
   display: none;
 }
 
@@ -63,14 +64,16 @@ nav button:hover {
 /* Articles Layout */
 .articles {
   display: flex;
-  gap: 15px;
+  gap: 10px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .article {
   position: relative;
-  width: 230px;
-  height: 190px;
+  width: 90%; /* responsive width */
+  max-width: 230px;
+  height: 180px;
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
@@ -89,23 +92,22 @@ nav button:hover {
   object-fit: cover;
 }
 
-/* Article Info Overlay */
 .article-info {
   position: absolute;
   bottom: 0;
   background: rgba(0, 0, 0, 0.8);
   width: 100%;
-  padding: 6px;
+  padding: 5px;
 }
 
 .article-info h3 {
   margin: 2px 0;
-  font-size: 14px;
+  font-size: 13px;
   color: gold;
 }
 
 .article-info p {
-  font-size: 12px;
+  font-size: 11px;
   color: #ddd;
   margin: 0;
 }
@@ -113,34 +115,16 @@ nav button:hover {
 /* Search */
 .search-bar {
   text-align: center;
-  padding: 15px;
+  padding: 12px;
   background: #111;
+  position: relative;
 }
 
 #searchInput {
-  width: 80%;
-  padding: 10px;
-  font-size: 15px;
-  border: 1px solid gold;
-  border-radius: 20px;
-  background: #000;
-  color: gold;
-}
-
-/* SEARCH CONTAINER FIX */
-.search-bar {
-  position: relative;   /* IMPORTANT */
-  text-align: center;
-  padding: 15px;
-  background: #111;
-}
-
-/* Search input */
-#searchInput {
-  width: 400px;
-  max-width: 90%;
+  width: 90%;
+  max-width: 400px;
   padding: 10px 15px;
-  font-size: 15px;
+  font-size: 14px;
   border: 1px solid gold;
   border-radius: 25px;
   background: #000;
@@ -148,45 +132,22 @@ nav button:hover {
   outline: none;
 }
 
-/* SEARCH DROPDOWN (PERFECT STYLE) */
+/* Search dropdown */
 #searchResults {
   position: absolute;
-  top: 60px; /* directly under input */
+  top: 50px;
   left: 50%;
   transform: translateX(-50%);
-  width: 400px;
-  max-width: 90%;
+  width: 90%;
+  max-width: 400px;
   background: #111;
   border: 1px solid gold;
   border-radius: 12px;
-  box-shadow: 0 0 15px rgba(255,215,0,0.4);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
   max-height: 250px;
   overflow-y: auto;
   display: none;
   z-index: 999;
-}
-
-/* Each result */
-#searchResults div {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
-  cursor: pointer;
-  color: gold;
-  transition: background 0.2s ease;
-}
-
-#searchResults div:hover {
-  background: rgba(255,215,0,0.1);
-}
-
-/* Small thumbnail */
-#searchResults img {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 6px;
 }
 
 #searchResults div {
@@ -202,20 +163,27 @@ nav button:hover {
   background: #222;
 }
 
+#searchResults img {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
 /* Popup */
 #popupOverlay {
   display: none;
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: #000;
+  background: rgba(0,0,0,0.95);
   color: gold;
   z-index: 1000;
   overflow-y: auto;
-  padding: 50px 20px 20px 20px;
+  padding: 30px 10px 10px 10px;
 }
 
 #popupContent {
-  max-width: 500px;
+  max-width: 95%;
   margin: auto;
   text-align: left;
 }
@@ -223,14 +191,14 @@ nav button:hover {
 #popupContent img {
   max-width: 100%;
   border-radius: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 #closePopup {
   position: fixed;
-  top: 15px;
-  right: 20px;
-  font-size: 32px;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
   font-weight: bold;
   color: gold;
   cursor: pointer;
@@ -238,17 +206,20 @@ nav button:hover {
 
 #backButton {
   position: fixed;
-  top: 15px;
-  left: 20px;
-  font-size: 14px;
+  top: 10px;
+  left: 15px;
+  font-size: 13px;
   font-weight: bold;
   background-color: gold;
   color: black;
   border: none;
   border-radius: 20px;
-  padding: 8px 16px;
+  padding: 6px 12px;
   cursor: pointer;
-}#loader {
+}
+
+/* Loader */
+#loader {
   position: fixed;
   width: 100%;
   height: 100vh;
@@ -260,23 +231,22 @@ nav button:hover {
 }
 
 .logo {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: bold;
   color: gold;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   animation: glow 1.5s infinite alternate;
 }
 
 @keyframes glow {
-  from {
-    text-shadow: 0 0 5px gold;
-  }
-  to {
-    text-shadow: 0 0 20px gold, 0 0 30px orange;
-  }
-}.luxury-hero {
+  from { text-shadow: 0 0 5px gold; }
+  to { text-shadow: 0 0 15px gold, 0 0 25px orange; }
+}
+
+/* Hero */
+.luxury-hero {
   position: relative;
-  height: 450px;
+  height: 300px;
   width: 100%;
   background: linear-gradient(180deg, #000 0%, #0d0d0d 100%);
   display: flex;
@@ -285,87 +255,20 @@ nav button:hover {
   overflow: hidden;
 }
 
-/* ================= FULL GOLD BACKGROUND GLOW ================= */
+.luxury-hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(255,215,0,0.2), transparent 60%); }
+.gold-wave, .gold-shimmer, .gold-particles { position: absolute; inset:0; }
 
-.luxury-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(255,215,0,0.2), transparent 60%);
-}
+/* Logo */
+.center-logo img { width: 120px; filter: drop-shadow(0 0 25px gold); animation: logoFloat 4s ease-in-out infinite alternate; }
 
-/* ================= MOVING GOLD WAVE ================= */
+@keyframes logoFloat { from { transform: translateY(0px);} to { transform: translateY(-8px); } }
 
-.gold-wave {
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    120deg,
-    transparent 30%,
-    rgba(255,215,0,0.15) 50%,
-    transparent 70%
-  );
-  animation: waveMove 8s linear infinite;
-}
-
-@keyframes waveMove {
-  from { transform: translateX(-50%) rotate(10deg); }
-  to { transform: translateX(50%) rotate(10deg); }
-}
-
-/* ================= SHIMMER LAYER ================= */
-
-.gold-shimmer {
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    45deg,
-    rgba(255,215,0,0.05),
-    rgba(255,215,0,0.05) 2px,
-    transparent 2px,
-    transparent 6px
-  );
-  opacity: 0.3;
-  animation: shimmerMove 20s linear infinite;
-}
-
-@keyframes shimmerMove {
-  from { background-position: 0 0; }
-  to { background-position: 300px 300px; }
-}
-
-/* ================= FLOATING PARTICLES ================= */
-
-.gold-particles {
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(255,215,0,0.4) 1px, transparent 1px);
-  background-size: 50px 50px;
-  animation: particlesMove 15s linear infinite;
-}
-
-@keyframes particlesMove {
-  from { background-position: 0 0; }
-  to { background-position: 0 200px; }
-}
-
-/* ================= LOGO ================= */
-
-.center-logo {
-  position: relative;
-  z-index: 5;
-}
-
-.center-logo img {
-  width: 170px;
-  filter: drop-shadow(0 0 50px gold);
-  animation: logoFloat 4s ease-in-out infinite alternate;
-}
-
-@keyframes logoFloat {
-  from { transform: translateY(0px); }
-  to { transform: translateY(-12px); }
+/* Responsive tweaks */
+@media (max-width: 500px) {
+  nav button { font-size: 12px; padding: 5px 10px; }
+  #popupContent { padding: 10px; }
+  #searchInput { width: 95%; }
+  .article { height: 160px; }
 }
   </style>
 </head>
